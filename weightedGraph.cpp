@@ -26,3 +26,14 @@ public:
         }
     }
 };
+
+int main()
+{
+    Graph g(4);
+    g.addEdge(0, 1, 5); // vertex 0-1, bobot 5
+    g.addEdge(0, 2, 2); // vertex 0-2, bobot 2
+    g.addEdge(1, 3, 3); // vertex 1-3, bobot 3
+    g.addEdge(2, 3, 1); // vertex 2-3, bobot 1
+    g.display();
+    return 0;
+}

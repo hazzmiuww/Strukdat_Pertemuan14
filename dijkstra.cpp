@@ -9,9 +9,10 @@ vector<pair<int, int>> graph[100];
 void dijkstra(int start, int V)
 {
     vector<int> dist(V, INF);
-    priority_queue<pair<int, int>,
-                   vector<pair<int, int>>,
-                   greater<pair<int, int>>>
+    priority_queue<
+        pair<int, int>,
+        vector<pair<int, int>>,
+        greater<pair<int, int>>>
         pq;
 
     dist[start] = 0;
@@ -33,7 +34,21 @@ void dijkstra(int start, int V)
         }
     }
 
-    cout << "Jarak Terpendek" << endl;
+    cout << "Jarak Terpendek dari vertex " << start << ":" << endl;
     for (int i = 0; i < V; i++)
-        cout << i << " : " << dist[i] << endl;
+        cout << "  ke " << i << " : " << dist[i] << endl;
+}
+
+int main()
+{
+    // Studi kasus: Surabaya(0) - Sidoarjo(1) - Gresik(2)
+    graph[0].push_back({1, 5}); // Surabaya - Sidoarjo, 5 km
+    graph[1].push_back({0, 5});
+    graph[0].push_back({2, 3}); // Surabaya - Gresik, 3 km
+    graph[2].push_back({0, 3});
+    graph[1].push_back({2, 4}); // Sidoarjo - Gresik, 4 km
+    graph[2].push_back({1, 4});
+
+    dijkstra(0, 3);
+    return 0;
 }
